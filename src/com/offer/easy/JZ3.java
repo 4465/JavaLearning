@@ -1,4 +1,4 @@
-package com.offer;
+package com.offer.easy;
 
 public class JZ3 {
     /**

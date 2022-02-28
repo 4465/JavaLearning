@@ -1,4 +1,8 @@
-package com.offer;
+package com.offer.easy;
+
+
+
+import com.offer.ListNode;
 
 import java.util.ArrayList;
 

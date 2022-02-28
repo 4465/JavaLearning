@@ -1,4 +1,4 @@
-package com.offer;
+package com.offer.easy;
 
 import java.util.*;
 
