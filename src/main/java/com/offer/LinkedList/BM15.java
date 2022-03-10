@@ -18,21 +18,25 @@ public class BM15 {
         // write code here
 
         HashMap<Integer, Integer> map = new LinkedHashMap<>();
-        ListNode vhead = new ListNode(0);
-        vhead.next = head;
-        ListNode pre = vhead;
-        while (head!= null){
-            System.out.println(head.val);
-            if(map.containsKey(head.val)){
-                head = head.next;
-                pre.next = head;
+        if(head == null)
+            return null;
+        if(head.next == null)
+            return head;
+        ListNode pre = head;
+        ListNode curr = head.next;
+        map.put(head.val, 1);
+        while (curr != null){
+
+            if(map.containsKey(curr.val)){
+                curr = curr.next;
+                pre.next = curr;
             }else{
-                map.put(head.val, 1);
-                pre = head;
-                head = head.next;
+                map.put(curr.val, 1);
+                pre = curr;
+                curr = curr.next;
             }
         }
-        return vhead.next;
+        return head;
     }
 
 
@@ -53,6 +57,10 @@ public class BM15 {
                 curr.next = null;
             }
         }
-        (new BM15()).deleteDuplicates(head.next);
+        ListNode result = (new BM15()).deleteDuplicates(head.next);
+        while(result!=null){
+            System.out.println(result.val);
+            result = result.next;
+        }
     }
 }
