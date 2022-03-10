@@ -16,11 +16,13 @@ public class BM15 {
      */
     public ListNode deleteDuplicates (ListNode head) {
         // write code here
+
         HashMap<Integer, Integer> map = new LinkedHashMap<>();
-        ListNode vhead = null;
+        ListNode vhead = new ListNode(0);
         vhead.next = head;
         ListNode pre = vhead;
         while (head!= null){
+            System.out.println(head.val);
             if(map.containsKey(head.val)){
                 head = head.next;
                 pre.next = head;
