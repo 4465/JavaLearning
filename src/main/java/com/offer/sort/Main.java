@@ -1,5 +1,6 @@
 package com.offer.sort;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -11,6 +12,7 @@ public class Main {
             for (int i = 0; i < input.length; i++) {
                 arr[i] = Integer.parseInt(input[i]);
             }
+            System.out.println(Arrays.toString(arr));
 //            InsertionSort IS = new InsertionSort(arr);
 //            IS.InsetSort();
 //            IS.print();
@@ -19,13 +21,16 @@ public class Main {
 //            SS.SelectSort();
 //            SS.print();
 
-            QuicklykSort QS = new QuicklykSort(arr);
-            System.out.println(QS.toString());
-
-            QS.QuickSort(arr,0,arr.length-1);
-            System.out.println(QS.toString());
+//            QuicklykSort QS = new QuicklykSort(arr);
+//            System.out.println(QS.toString());
+//
+//            QS.QuickSort(arr,0,arr.length-1);
+//            System.out.println(QS.toString());
 //            QS.print();
 
+            HeapSort HS = new HeapSort();
+            HS.heap_sort(arr, arr.length);
+            System.out.println(Arrays.toString(arr));
 
         }
 
