@@ -15,9 +15,18 @@ public class Main {
 //            IS.InsetSort();
 //            IS.print();
 
-            SelectionSort SS = new SelectionSort(arr);
-            SS.SelectSort();
-            SS.print();
+//            SelectionSort SS = new SelectionSort(arr);
+//            SS.SelectSort();
+//            SS.print();
+
+            QuicklykSort QS = new QuicklykSort(arr);
+            System.out.println(QS.toString());
+
+            QS.QuickSort(arr,0,arr.length-1);
+            System.out.println(QS.toString());
+//            QS.print();
+
+
         }
 
     }
