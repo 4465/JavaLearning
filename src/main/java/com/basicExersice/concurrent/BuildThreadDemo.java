@@ -1,6 +1,10 @@
 package com.basicExersice.concurrent;
 
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+
 //通过继承Thread类实现创建线程
 class MyThread extends Thread{
     @Override
@@ -21,10 +25,18 @@ class MyThread1 implements Runnable{
 }
 
 
+//通过Callable接口创建线程
+class MyThread2 implements Callable{
+    @Override
+    public Object call() throws Exception {
+        return 123;
+    }
+}
+
 public class BuildThreadDemo {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
         Thread t = new MyThread();
         t.start();
 
@@ -32,8 +44,17 @@ public class BuildThreadDemo {
             System.out.println("我要学习多线程" + i);
         }
 
-        Thread tt = new Thread(new MyThread1());
+        MyThread1 instance = new MyThread1();
+
+        Thread tt = new Thread(instance);
         tt.start();
+
+        MyThread2 myThread2 = new MyThread2();
+        FutureTask<Integer> ft = new FutureTask<>(myThread2);
+        Thread thread = new Thread(ft);
+        thread.start();
+        System.out.println(ft.get());
+
     }
 
 }
