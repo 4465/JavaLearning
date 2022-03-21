@@ -1,4 +1,4 @@
-package com.basicExersice;
+package com.basicExersice.string;
 
 import java.util.StringJoiner;
 

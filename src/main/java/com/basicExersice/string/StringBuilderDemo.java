@@ -1,4 +1,4 @@
-package com.basicExersice;
+package com.basicExersice.string;
 
 class Adder{
     private int sum = 0;

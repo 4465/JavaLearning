@@ -1,4 +1,4 @@
-package com.basicExersice;
+package com.basicExersice.string;
 
 public class StringCompareEmp {
     public static void main(String[] args){
