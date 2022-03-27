@@ -9,11 +9,30 @@ public class MySort {
             System.out.print(arr[i] + " ");
         }
         System.out.println();
-        System.out.println("============================");
+//        System.out.println("============================");
     }
 
     public static void QuickSort(int[] arr, int l, int r){
-
+        print(arr);
+        if(l>=r){
+            return;
+        }
+        int i = l;
+        int j = r;
+        int k = arr[l];
+        while (i<j){
+            while (arr[j] >= k && i<j){
+                j--;
+            }
+            arr[i] = arr[j];
+            while (arr[i] <= k && i<j){
+                i++;
+            }
+            arr[j] = arr[i];
+        }
+        arr[i] = k;
+        QuickSort(arr, l, i-1);
+        QuickSort(arr, i+1, r);
     }
 
 
@@ -100,11 +119,15 @@ public class MySort {
         for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
-//        MySort.QuickSort(arr, 0, arr.length-1);
+        MySort.QuickSort(arr, 0, arr.length-1);
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
 //        MySort.InsertSort(arr);
 //        MySort.SelectSort(arr);
 //        MySort.BubbleSort(arr);
-        MySort.ShellSort(arr);
+//        MySort.ShellSort(arr);
     }
 
 }
