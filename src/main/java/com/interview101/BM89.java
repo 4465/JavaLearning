@@ -1,9 +1,6 @@
 package com.interview101;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Scanner;
+import java.util.*;
 
 import com.interview101.Interval;
 
@@ -11,13 +8,39 @@ public class BM89 {
 
     public ArrayList<Interval> merge(ArrayList<Interval> intervals) {
         ArrayList<Interval> ans = new ArrayList<>();
+        LinkedList<Interval> list = new LinkedList<>();
+        Collections.sort(intervals, new Comparator<Interval>() {
+            @Override
+            public int compare(Interval o1, Interval o2) {
+                return o1.start - o2.start;
+            }
+        });
+
+//        System.out.println(intervals.toString());
+
         for (int i = 0; i < intervals.size(); i++) {
+//            System.out.println(intervals.get(i).toString());
             int min = intervals.get(i).start;
             int max = intervals.get(i).end;
-            for (int j = i; j < intervals.size(); j++) {
-
+            if(list.isEmpty()){
+                list.addLast(new Interval(intervals.get(i).start, intervals.get(i).end));
+            }
+            else {
+                Interval temp = list.peekLast();
+                if(min >= temp.start && min <= temp.end){
+                    list.pollLast();
+                    list.addLast(new Interval(Math.min(min, temp.start), Math.max(max, temp.end)));
+                }
+                else{
+                    list.addLast(intervals.get(i));
+                }
             }
         }
+        while (!list.isEmpty()){
+            ans.add(list.pollFirst());
+        }
+
+        return ans;
     }
 
     public static void main(String[] args) {
@@ -31,13 +54,8 @@ public class BM89 {
                 int end = sc.nextInt();
                 intervals.add(new Interval(start, end));
             }
-            Collections.sort(intervals, new Comparator<Interval>() {
-                @Override
-                public int compare(Interval o1, Interval o2) {
-                    return o1.start - o2.start;
-                }
-            });
-            System.out.println(intervals.toString());
+            BM89 bm89 = new BM89();
+            bm89.merge(intervals);
         }
     }
 }
