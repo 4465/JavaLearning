@@ -30,13 +30,29 @@ public class BM45 {
      * @return
      */
     public ArrayList<Integer> maxInWindows1(int [] num, int size){
-        LinkedList queue = new LinkedList();
         ArrayList<Integer> ans = new ArrayList<>();
-        for (int i = 0; i < num.length; i++) {
-            if(queue.size() == 3){
-
+        int n = num.length;
+        Deque<Integer> deque = new LinkedList<>();
+        for (int i = 0; i < size; i++) {
+            while (!deque.isEmpty() && num[i] >= num[deque.peekLast()]){
+                deque.pollLast();
             }
+            deque.offerLast(i);
         }
+
+        ans.add(num[deque.peekFirst()]);
+
+        for (int i = size; i < n; i++) {
+            while (!deque.isEmpty() && num[i] >= num[deque.peekLast()]){
+                deque.pollLast();
+            }
+            deque.offerLast(i);
+            while (deque.peekFirst() <= i -size){
+                deque.pollFirst();
+            }
+            ans.add(num[deque.peekFirst()]);
+        }
+        return ans;
     }
 
     public static void main(String[] args) {
@@ -48,7 +64,7 @@ public class BM45 {
         }
         int k = sc.nextInt();
         BM45 bm45 = new BM45();
-        ArrayList<Integer> ans = bm45.maxInWindows(arr, k);
+        ArrayList<Integer> ans = bm45.maxInWindows1(arr, k);
         System.out.println(ans);
     }
 }

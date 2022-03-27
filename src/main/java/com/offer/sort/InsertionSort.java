@@ -10,6 +10,7 @@ public class InsertionSort {
 
     //普通插入排序
     public int[] InsetSort(){
+
         for (int i = 1; i < value.length; i++) {
             int insertValue= value[i];
             for(int j = i-1;j>=0;j--){
