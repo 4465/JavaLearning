@@ -5,31 +5,47 @@ import java.util.*;
 public class BM54 {
 
     public ArrayList<ArrayList<Integer>> threeSum(int[] num) {
-        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
-        int len = num.length;
+        ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
         Arrays.sort(num);
-        for (int i = 0; i < len; i++) {
+        for (int i = 0; i < num.length - 2; i++) {
+            if(i!=0 && num[i] == num[i-1]){
+                continue;
+            }
             int target = -num[i];
             int l = i + 1;
-            int r = len - 1;
-            while (l<r){
+            int r = num.length - 1;
+            while (l < r){
+
                 if(num[l] + num[r] == target){
-                    ArrayList<Integer> ans = new ArrayList<>();
-                    ans.add(num[i]);
-                    ans.add(num[l]);
-                    ans.add(num[r]);
-                    res.add(ans);
+                    ArrayList<Integer> res = new ArrayList<>();
+                    res.add(num[i]);
+                    res.add(num[l]);
+                    res.add(num[r]);
+                    ans.add(res);
+                    while (l + 1 < r && num[l] == num[l+1]){
+                        l++;
+                    }
+                    while (r - 1 > l && num[r] == num[r-1]){
+                        r--;
+                    }
                     l++;
-                }
-                else if(num[l] + num[r] > target){
                     r--;
                 }
-                else {
+                else if(num[l] + num[r] < target){
                     l++;
+                }
+                else {
+                    r--;
                 }
             }
         }
-        return res;
+        for (int i = 0; i < ans.size(); i++) {
+            for (int j = 0; j < ans.get(i).size(); j++) {
+                System.out.print(ans.get(i).get(j) + " ");
+            }
+            System.out.println();
+        }
+        return ans;
     }
 
     public static void main(String[] args) {
