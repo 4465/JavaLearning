@@ -1,11 +1,8 @@
 package com.interview101;
 
-
-
 import java.util.*;
 
-public class BM4 {
-
+public class BM5 {
     public ListNode Merge(ListNode list1,ListNode list2) {
         ListNode head = new ListNode(-1);
         ListNode cur = head;
@@ -35,24 +32,18 @@ public class BM4 {
         return head.next;
     }
 
+    public ListNode mergeKLists(ArrayList<ListNode> lists) {
+        if(lists.size() == 0)
+            return null;
+        ListNode head = new ListNode(-1);
+        head = Merge(head.next, lists.get(0));
+        for (int i = 1; i < lists.size(); i++) {
+            head = Merge(head, lists.get(i));
+        }
+        return head;
+    }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String[] params1 = sc.nextLine().trim().split(" ");
-        String[] params2 = sc.nextLine().trim().split(" ");
-        ListNode head1 = new ListNode(-1);
-        ListNode head2 = new ListNode(-1);
-        ListNode cur1 = head1;
-        ListNode cur2 = head2;
-        for (int i = 0; i < params1.length; i++) {
-            cur1.next = new ListNode(Integer.parseInt(params1[i]));
-            cur1 = cur1.next;
-        }
-        for (int i = 0; i < params2.length; i++) {
-            cur2.next = new ListNode(Integer.parseInt(params2[i]));
-            cur2 = cur2.next;
-        }
-        BM4 bm4 = new BM4();
-        ListNode res = bm4.Merge(head1.next, head2.next);
+
     }
 }
