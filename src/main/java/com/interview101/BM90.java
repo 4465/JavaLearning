@@ -10,16 +10,6 @@ import java.util.Scanner;
 public class BM90 {
     public String minWindow (String S, String T) {
         // write code here
-        LinkedList<Integer> list = new LinkedList<>();
-        HashMap<Character, Integer> map = new HashMap<>();
-        for (int i = 0; i < T.length(); i++) {
-            if(!map.containsKey(T.charAt(i))){
-                map.put(T.charAt(i), 1);
-            }
-        }
-        for (int i = 0; i < S.length(); i++) {
-
-        }
         return "";
     }
 

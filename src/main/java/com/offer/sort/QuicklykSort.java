@@ -17,8 +17,6 @@ public class QuicklykSort {
         this.value = arr;
     }
 
-
-
     public void QuickSort(int[] value, int l ,int r){
 
         if(l>=r) {
