@@ -1,6 +1,6 @@
 package com.interview101;
 
-import com.offer.tree.TreeNode;
+import com.algorithm.tree.TreeNode;
 
 import java.util.*;
 
